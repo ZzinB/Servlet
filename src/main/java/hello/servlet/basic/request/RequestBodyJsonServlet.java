@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-@WebServlet(name="requestBodyStringServlet", urlPatterns = "/request-body-json")
+@WebServlet(name="requestBodyJsonServlet", urlPatterns = "/request-body-json")
 
 public class RequestBodyJsonServlet extends HttpServlet {
 
