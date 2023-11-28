@@ -1,0 +1,21 @@
+package hello.servlet.domain.member;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
+public class Member {
+    private Long id; //식별자 id 값
+    private String username; //이름
+    private int age; //나이
+
+    //기본 생성자
+    public Member() {
+    }
+
+    //생성자
+    public Member(String username, int age) {
+        this.username = username;
+        this.age = age;
+    }
+}
