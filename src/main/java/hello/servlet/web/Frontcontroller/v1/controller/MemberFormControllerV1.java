@@ -14,5 +14,4 @@ public class MemberFormControllerV1 implements ControllerV1 {
         String viewPath = "/WEB-INF/views/new-form.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
-    }
-}
+    } }

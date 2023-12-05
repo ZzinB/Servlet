@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 
 public class MemberSaveControllerV1 implements ControllerV1 {
-
     private MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,5 +26,4 @@ public class MemberSaveControllerV1 implements ControllerV1 {
         String viewPath = "/WEB-INF/views/save-result.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
-    }
-}
+    } }
