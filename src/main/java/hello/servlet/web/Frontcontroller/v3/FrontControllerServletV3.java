@@ -48,6 +48,7 @@ public class FrontControllerServletV3 extends HttpServlet {
         view.render(request, response);
     }
 
+    //논리이름을 가지고 실제 물리적이름을 만들면서 myView를 반환하는 메소드
     private static MyView viewResolver(String viewName) {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
