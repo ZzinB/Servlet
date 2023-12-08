@@ -45,14 +45,16 @@ public class FrontControllerServletV3 extends HttpServlet {
         // "/WEB-INF/views/new-form.jsp"
         MyView view = viewResolver(viewName);
 
-        view.render(request, response);
+        view.render(mv.getModel(), request, response);
     }
 
     //논리이름을 가지고 실제 물리적이름을 만들면서 myView를 반환하는 메소드
+    // 컨트롤러가 반환한 논리 뷰 이름을 실제 물리 뷰 경로로 변경
     private static MyView viewResolver(String viewName) {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
+    // HttpServletRequest에서 파라미터 정보를 꺼내에 Map으로 변환
     private static Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String, String> paramMap = new HashMap<>();
         request.getParameterNames().asIterator()
