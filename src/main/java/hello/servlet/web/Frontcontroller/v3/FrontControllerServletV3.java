@@ -2,10 +2,7 @@ package hello.servlet.web.Frontcontroller.v3;
 
 import hello.servlet.web.Frontcontroller.ModelView;
 import hello.servlet.web.Frontcontroller.MyView;
-import hello.servlet.web.Frontcontroller.v2.ControllerV3;
-import hello.servlet.web.Frontcontroller.v2.controller.MemberFormControllerV3;
-import hello.servlet.web.Frontcontroller.v2.controller.MemberListControllerV3;
-import hello.servlet.web.Frontcontroller.v2.controller.MemberSaveControllerV3;
+import hello.servlet.web.Frontcontroller.v3.ControllerV3;
 import hello.servlet.web.Frontcontroller.v3.controller.MemberFormControllerV3;
 import hello.servlet.web.Frontcontroller.v3.controller.MemberListControllerV3;
 import hello.servlet.web.Frontcontroller.v3.controller.MemberSaveControllerV3;
@@ -41,14 +38,18 @@ public class FrontControllerServletV3 extends HttpServlet {
             return;
         }
         //paramMap
-        Map<String, String> paramMap = createParamMap(HttpServletRequest request);
+        Map<String, String> paramMap = createParamMap(request);
         ModelView mv = controller.process(paramMap);
 
         String viewName = mv.getViewName();//논리이름 new-form
         // "/WEB-INF/views/new-form.jsp"
-        MyView view = new MyView("/WEB-INF/views/" + viewName + ".jsp");
+        MyView view = viewResolver(viewName);
 
         view.render(request, response);
+    }
+
+    private static MyView viewResolver(String viewName) {
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
     private static Map<String, String> createParamMap(HttpServletRequest request) {
