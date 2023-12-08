@@ -38,11 +38,14 @@ public class FrontControllerServletV4 extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+
         Map<String, String> paramMap = createParamMap(request);
+        //모델 객체를 프론트 컨트롤러에서 생성해서 넘겨준다.
         Map<String, Object> model = new HashMap<>();
 
         String viewName = controller.process(paramMap, model);
 
+        //뷰의 논리 이름을 직접 반환(이 값을 이용해서 실제 물리 뷰 찾음)
         MyView view = viewResolver(viewName);
         view.render(model, request, response);
     }
