@@ -2,7 +2,8 @@ package hello.servlet.web.Frontcontroller.v5.adapter;
 
 import hello.servlet.web.Frontcontroller.ModelView;
 import hello.servlet.web.Frontcontroller.v3.ControllerV3;
-import hello.servlet.web.Frontcontroller.v5.MyHandlerAdaptor;
+import hello.servlet.web.Frontcontroller.v5.MyHandlerAdapter;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -11,14 +12,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ControllerV3HandlerAdapter implements MyHandlerAdaptor {
+public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
     @Override
     public boolean supprots(Object handler) {
         return(handler instanceof ControllerV3);
     }
     @Override
-    public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws SerialException, IOException {
+    public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler){
         ControllerV3 controller = (ControllerV3) handler;
         Map<String, String> paramMap = createParamMap(request);
         ModelView mv = controller.process(paramMap);
