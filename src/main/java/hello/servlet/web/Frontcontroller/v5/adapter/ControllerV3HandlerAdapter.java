@@ -20,8 +20,10 @@ public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
     }
     @Override
     public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler){
+        //V3컨트롤러로 변경
         ControllerV3 controller = (ControllerV3) handler;
         Map<String, String> paramMap = createParamMap(request);
+        //컨트롤러 process 호출
         ModelView mv = controller.process(paramMap);
         return mv;
     }
