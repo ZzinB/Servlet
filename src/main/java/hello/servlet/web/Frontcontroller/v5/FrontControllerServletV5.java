@@ -22,11 +22,16 @@ public class FrontControllerServletV5 extends HttpServlet {
 
     // 생성자는 핸들러 매핑과 어댑터를 초기화
     public FrontControllerServletV5(){
+        initHandlerMappingMap();
+
+        initHandlerAdapters();
+    }
+    private void initHandlerMappingMap() {
         handlerMappingMap.put("/front-controller/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/front-controller/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/front-controller/v3/members", new MemberListControllerV3());
-
+    }
+    private void initHandlerAdapters() {
         handlerApators.add(new ControllerV3HandlerAdapter());
     }
-
 }
