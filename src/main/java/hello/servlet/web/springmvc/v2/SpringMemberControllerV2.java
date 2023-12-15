@@ -11,20 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@RequestMapping("/springmvc/v2/members")
 public class SpringMemberControllerV2 {
     private MemberRepository memberRepository = MemberRepository.getInstance();
-    @RequestMapping("/springmvc/v2/members/new-form")
+    @RequestMapping("/new-form")
     public ModelAndView newForm(){
         return new ModelAndView("new-form");
     }
-    @RequestMapping("/springmvc/v2/members")
+    @RequestMapping("/members")
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();
         ModelAndView mv = new ModelAndView("members");
         mv.addObject("members", members);
         return mv;
     }
-    @RequestMapping("/springmvc/v2/members/save")
+    @RequestMapping("/save")
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
         String username =request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
